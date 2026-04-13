@@ -4,19 +4,24 @@ import { motion } from 'framer-motion'
 export default function Hero() {
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center px-5 overflow-hidden">
-      {/* Animated gradient orbs */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[100px] dark:opacity-[0.08] opacity-[0.06] pointer-events-none"
-        style={{ background: 'var(--accent)' }}
-        animate={{ x: [0, 30, -20, 0], y: [0, -25, 15, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full blur-[100px] dark:opacity-[0.05] opacity-[0.04] pointer-events-none"
-        style={{ background: '#8b5cf6' }}
-        animate={{ x: [0, -25, 20, 0], y: [0, 20, -15, 0] }}
-        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-      />
+      {/* Animated gradient orbs — desktop only (perf) */}
+      <div className="hidden md:block">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[100px] dark:opacity-[0.08] opacity-[0.06] pointer-events-none"
+          style={{ background: 'var(--accent)' }}
+          animate={{ x: [0, 30, -20, 0], y: [0, -25, 15, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full blur-[100px] dark:opacity-[0.05] opacity-[0.04] pointer-events-none"
+          style={{ background: '#8b5cf6' }}
+          animate={{ x: [0, -25, 20, 0], y: [0, 20, -15, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+        />
+      </div>
+      {/* Static glow for mobile */}
+      <div className="md:hidden absolute top-1/3 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full pointer-events-none"
+        style={{ background: 'var(--accent)', filter: 'blur(80px)', opacity: 0.06 }} />
 
       <div className="relative w-full max-w-4xl mx-auto text-center">
         <motion.p
